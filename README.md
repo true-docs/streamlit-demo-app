@@ -1,6 +1,6 @@
 # Demo app
 
-A simple web app that allows users to upload a file and try out the Truedocs API.
+A simple web app that allows users to upload a file and try out the [Truedocs API](https://api.truedocs.mx/docs).
 
 ## Running
 
@@ -15,7 +15,7 @@ A simple web app that allows users to upload a file and try out the Truedocs API
 
 1. Once the app is running, navigate to the provided localhost URL in your web browser.
 1. You will see a file uploader on the app's main page. Click on it to upload a file from your computer.
-1. After you've selected a file, the app will automatically send it to the Truedocs API.
+1. After you've selected a file, the app will automatically send it to the [Truedocs API](https://api.truedocs.mx/docs).
 1. The app will display a loading spinner while it waits for the API to return the document class and metadata.
 1. Once the API response is received, the app will display the prediction results on the page.
 1. If there is an error during any part of this process, the app will display an error message.
