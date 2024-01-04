@@ -2,18 +2,26 @@ import streamlit as st
 from api.truedocs import run_prediction
 
 
-def main():
-    st.title('Demo de clasificación de documentos')
-    st.markdown('## Instrucciones')
-    st.markdown('1. Sube un documento.')
-    st.markdown('2. El sistema va a correr su predicción y mostrar el resultado.')
+instructions = """# Truedocs
+⚡ Esta aplicación demuestra el poder y capacidades de la API de Truedocs 
+para aplicar inteligencia artificial sobre documentos 🖺.
 
+Para mayor información acerca de nuestra API visita [api.truedocs.mx/docs](https://api.truedocs.mx/docs).
+
+## Instrucciones
+1. Sube un documento.  
+1. El sistema va a correr su predicción y mostrar el resultado.  
+"""
+
+def main():
+    st.caption("Demo del uso del API de Truedocs")
+    st.markdown(instructions)
     st.warning("Truedocs no guarda los documentos cargados. Tu documento se elimina al terminar la sesión.", icon="⚠️")
 
     uploaded_file = st.file_uploader('Carga un archivo', type=['pdf', 'jpg', 'png'])
 
     if uploaded_file is not None:
-        with st.spinner('Clasificando documento...'):
+        with st.spinner('Ejecutando predicción...'):
             try:
                 prediction = run_prediction(uploaded_file)
                 st.success('¡Documento clasificado con éxito!')
