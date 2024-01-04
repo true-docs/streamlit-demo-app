@@ -24,7 +24,7 @@ def main():
         with st.spinner('Ejecutando predicción...'):
             try:
                 prediction = run_prediction(uploaded_file)
-                st.success('¡Documento clasificado con éxito!')
+                st.success('¡Documento procesado con éxito!')
                 st.markdown('## Resultados')
                 st.write("Tipo de documento: ", prediction["documentType"])
                 if 'entity' in prediction:
