@@ -20,7 +20,8 @@ def main():
                 st.success('¡Documento clasificado con éxito!')
                 st.markdown('## Resultados')
                 st.write("Tipo de documento: ", prediction["documentType"])
-                st.write("Entidad: ", prediction["entity"])
+                if 'entity' in prediction:
+                    st.write("Entidad: ", prediction["entity"])
                 st.write("Score: ", str(prediction["confidence"])[:4])
             except Exception as e:
                 st.error(f'Error: {e}')
