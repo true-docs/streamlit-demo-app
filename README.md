@@ -2,7 +2,7 @@
 
 A simple web app that allows users to upload a file and try out the Truedocs API.
 
-## How to Run the App
+## Running
 
 1. Clone this repository to your local machine.
 1. Navigate to the project directory in your terminal.
@@ -11,14 +11,14 @@ A simple web app that allows users to upload a file and try out the Truedocs API
 1. Copy the .streamlit/secrets_example.toml into .streamlit/secrets.toml and fill out the secret values.
 1. Run the app by typing `streamlit run app.py` in your terminal.
 
-## How to Use the App
+## Usage
 
 1. Once the app is running, navigate to the provided localhost URL in your web browser.
-2. You will see a file uploader on the app's main page. Click on it to upload a file from your computer.
-3. After you've selected a file, the app will automatically send it to the Truedocs API.
-4. The app will display a loading spinner while it waits for the API to return the document class and metadata.
-5. Once the API response is received, the app will display the document class and metadata on the page.
-6. If there is an error during any part of this process, the app will display an error message.
+1. You will see a file uploader on the app's main page. Click on it to upload a file from your computer.
+1. After you've selected a file, the app will automatically send it to the Truedocs API.
+1. The app will display a loading spinner while it waits for the API to return the document class and metadata.
+1. Once the API response is received, the app will display the prediction results on the page.
+1. If there is an error during any part of this process, the app will display an error message.
 
 ## Notes
 
