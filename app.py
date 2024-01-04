@@ -3,11 +3,6 @@ import streamlit as st
 from api.truedocs import run_prediction
 
 
-def predict(file):
-    prediction = run_prediction(file)
-    return prediction
-
-
 def main():
     st.title('Demo de clasificación de documentos')
     st.markdown('## Instrucciones')
@@ -21,7 +16,7 @@ def main():
     if uploaded_file is not None:
         with st.spinner('Clasificando documento...'):
             try:
-                prediction = predict(uploaded_file)
+                prediction = run_prediction(uploaded_file)
                 st.success('¡Documento clasificado con éxito!')
                 st.markdown('## Resultados')
                 st.write("Tipo de documento: ", prediction["documentType"])
