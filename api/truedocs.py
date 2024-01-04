@@ -10,18 +10,14 @@ def run_prediction(file, test=False):
         return {
             "documentType": "test",
             "entity": "The Testing Company",
-            "confidence": 0.8246
+            "confidence": 0.8246,
         }
 
     api_endpoint = f"{st.secrets['truedocs_api_url']}/classify"
-    headers = {
-        "X-Api-Key": st.secrets["truedocs_api_key"]
-    }
-    
+    headers = {"X-Api-Key": st.secrets["truedocs_api_key"]}
+
     payload = {}
-    files = [
-        ('document', file)
-    ]
+    files = [("document", file)]
 
     # Send the file to the API and get the response
     response = requests.post(api_endpoint, headers=headers, data=payload, files=files)
@@ -34,4 +30,6 @@ def run_prediction(file, test=False):
         return p
     else:
         # If the request was not successful, raise an exception
-        raise Exception("Truedocs API request failed with status code " + str(response.status_code))
+        raise Exception(
+            "Truedocs API request failed with status code " + str(response.status_code)
+        )
