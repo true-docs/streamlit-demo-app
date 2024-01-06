@@ -12,7 +12,7 @@ from content import (
 def run(uploaded_file):
     with st.spinner("Ejecutando predicción..."):
         try:
-            prediction = run_prediction(uploaded_file)
+            prediction = run_prediction(uploaded_file)["prediction"]
             st.success("¡Documento procesado con éxito!")
             st.markdown("## Resultados")
             st.write("Tipo de documento: ", prediction["documentType"])
