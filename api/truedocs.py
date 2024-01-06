@@ -1,5 +1,6 @@
 import requests
 import streamlit as st
+import time
 
 
 def run_prediction(file, test=False):
@@ -7,6 +8,7 @@ def run_prediction(file, test=False):
     This function takes a file as input, sends it to the Truedocs API, and returns a prediction
     """
     if test:
+        time.sleep(2)
         return {
             "documentType": "test",
             "entity": "The Testing Company",
