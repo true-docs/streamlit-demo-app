@@ -3,7 +3,7 @@ import streamlit as st
 import time
 
 
-def run_prediction(file, operation="classify", parameters={}, test=False):
+def run_prediction(file, operation=None, parameters=None, test=False):
     """
     This function takes a file as input, sends it to the Truedocs API, and returns a prediction
     """
