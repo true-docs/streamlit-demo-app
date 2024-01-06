@@ -39,7 +39,8 @@ def main():
     uploaded_file = st.file_uploader("Carga un archivo", type=["pdf", "jpg", "png"])
 
     if uploaded_file is not None:
-        run(uploaded_file)
+        if st.button("Clasifica"):
+            run(uploaded_file)
     else:
         st.info("Favor de cargar un documento.")
 
