@@ -23,7 +23,9 @@ def run_prediction(file, operation=None, parameters=None, test=False):
     files = [("document", file)]
 
     # Send the file to the API and get the response
-    response = requests.post(api_endpoint, headers=headers, data=parameters, files=files)
+    response = requests.post(
+        api_endpoint, headers=headers, data=parameters, files=files
+    )
 
     # Check if the request was successful
     if response.status_code == 200:

@@ -20,10 +20,13 @@ def run(uploaded_file, operation, parameters):
             st.error(f"Error: {e}")
         return result
 
+
 def show_options(uploaded_file):
     st.markdown("## Aplica IA sobre el documento")
     st.markdown(capabilities)
-    st.info("Con el documento ya cargado, ahora puedes ejecutar operaciones de IA sobre tu documento.")
+    st.info(
+        "Con el documento ya cargado, ahora puedes ejecutar operaciones de IA sobre tu documento."
+    )
     tab1, tab2, tab3 = st.tabs(["Clasifica", "Coteja", "Valida"])
     with tab1:
         st.markdown(intro_to_classify)
