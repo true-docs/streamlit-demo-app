@@ -21,6 +21,28 @@ def run(uploaded_file, operation, parameters):
         return result
 
 
+def classify(uploaded_file):
+    prediction = run(uploaded_file, "classify", {})["prediction"]
+    st.write("Tipo de documento: ", prediction["documentType"])
+    if "entity" in prediction:
+        st.write("Entidad: ", prediction["entity"])
+    st.write("Score: ", str(prediction["confidence"])[:4])
+
+
+def match(uploaded_file, identifier, threshold, top_k):
+    parameters = {"identifier": identifier, "threshold": threshold, "top_k": top_k}
+    result = run(uploaded_file, "match", parameters)
+    if result:
+        st.write(result["matches"])
+
+
+def validate(uploaded_file, validation_type):
+    parameters = {"validationType": validation_type}
+    result = run(uploaded_file, "validate", parameters)
+    if result:
+        st.write(result["validation"])
+
+
 def show_options(uploaded_file):
     st.markdown("## Aplica IA sobre el documento")
     st.markdown(capabilities)
@@ -31,33 +53,19 @@ def show_options(uploaded_file):
     with tab1:
         st.markdown(intro_to_classify)
         if st.button("Clasifica"):
-            prediction = run(uploaded_file, "classify", {})["prediction"]
-            st.write("Tipo de documento: ", prediction["documentType"])
-            if "entity" in prediction:
-                st.write("Entidad: ", prediction["entity"])
-            st.write("Score: ", str(prediction["confidence"])[:4])
+            classify(uploaded_file)
     with tab2:
         st.markdown(intro_to_extract)
         identifier = st.text_input("Palabras a buscar")
         threshold = st.text_input("Umbral de similitud (1-100)", 80)
         top_k = st.text_input("Número de coincidencias", 1)
         if st.button("Busca"):
-            parameters = {
-                "identifier": identifier,
-                "threshold": threshold,
-                "top_k": top_k,
-            }
-            result = run(uploaded_file, "match", parameters)
-            if result:
-                st.write(result["matches"])
+            match(uploaded_file, identifier, threshold, top_k)
     with tab3:
         st.markdown(intro_to_validate)
         validation_type = st.selectbox("Tipo de validación", ["IsRecent", "DidExpire"])
         if st.button("Validar"):
-            parameters = {"validationType": validation_type}
-            result = run(uploaded_file, "validate", parameters)
-            if result:
-                st.write(result["validation"])
+            validate(uploaded_file, validation_type)
 
 
 def main():
