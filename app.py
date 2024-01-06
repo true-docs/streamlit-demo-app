@@ -2,11 +2,25 @@ import streamlit as st
 from api.truedocs import run_prediction
 
 
-instructions = """# Truedocs
-⚡ Esta aplicación demuestra el poder y capacidades de la API de Truedocs 
+instructions = """
+# Truedocs
+
+🚀 Bienvenido a Truedocs, donde revolucionamos el procesamiento de documentos. 
+
+Utilizando el poder de la Inteligencia Artificial (IA), nuestra API 
+está diseñada para acelerar significativamente tus flujos de trabajo de procesamiento 
+de documentos. Con Truedocs, puedes clasificar fácilmente una amplia gama de documentos, 
+desde documentos de identidad 🪪 hasta facturas de servicios públicos y mucho más. 
+Pero eso es sólo el comienzo.
+
+⚡ Esta aplicación de prueba demuestra el poder y capacidades de la API de Truedocs 
 para aplicar inteligencia artificial sobre documentos 🖺.
 
-Para mayor información acerca de nuestra API visita [api.truedocs.mx/docs](https://api.truedocs.mx/docs).
+Para mayor información acerca de nuestra API visita 
+[api.truedocs.mx/docs](https://api.truedocs.mx/docs).
+
+Para ver el código de esta app visita 
+[nuestro repositorio en GitHub](https://github.com/true-docs/streamlit-demo-app).
 
 ## Instrucciones
 1. Sube un documento.  
