@@ -14,6 +14,20 @@ Para mayor información acerca de nuestra API visita [api.truedocs.mx/docs](http
 """
 
 
+def run(uploaded_file):
+    with st.spinner("Ejecutando predicción..."):
+        try:
+            prediction = run_prediction(uploaded_file)
+            st.success("¡Documento procesado con éxito!")
+            st.markdown("## Resultados")
+            st.write("Tipo de documento: ", prediction["documentType"])
+            if "entity" in prediction:
+                st.write("Entidad: ", prediction["entity"])
+            st.write("Score: ", str(prediction["confidence"])[:4])
+        except Exception as e:
+            st.error(f"Error: {e}")
+
+
 def main():
     st.caption("Demo del uso del API de Truedocs")
     st.markdown(instructions)
@@ -25,17 +39,7 @@ def main():
     uploaded_file = st.file_uploader("Carga un archivo", type=["pdf", "jpg", "png"])
 
     if uploaded_file is not None:
-        with st.spinner("Ejecutando predicción..."):
-            try:
-                prediction = run_prediction(uploaded_file)
-                st.success("¡Documento procesado con éxito!")
-                st.markdown("## Resultados")
-                st.write("Tipo de documento: ", prediction["documentType"])
-                if "entity" in prediction:
-                    st.write("Entidad: ", prediction["entity"])
-                st.write("Score: ", str(prediction["confidence"])[:4])
-            except Exception as e:
-                st.error(f"Error: {e}")
+        run(uploaded_file)
     else:
         st.info("Favor de cargar un documento.")
 
