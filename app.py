@@ -84,6 +84,9 @@ def main():
     if uploaded_file is not None:
         img = Image.open(uploaded_file)
         st.image(np.array(img), width=320)
+
+        # Seek back to the start of the file
+        uploaded_file.seek(0)
         show_options(uploaded_file)
     else:
         st.info("Favor de cargar un documento.")
