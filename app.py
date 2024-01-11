@@ -1,3 +1,4 @@
+import numpy as np
 import streamlit as st
 from api.truedocs import run_prediction
 from content import (
@@ -7,6 +8,7 @@ from content import (
     intro_to_extract,
     intro_to_validate,
 )
+from PIL import Image
 
 
 def run(uploaded_file, operation, parameters):
@@ -77,9 +79,11 @@ def main():
     )
 
     st.markdown("## Carga un documento")
-    uploaded_file = st.file_uploader("Carga un archivo", type=["pdf", "jpg", "png"])
+    uploaded_file = st.file_uploader("Carga un archivo", type=["pdf", "jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
+        img = Image.open(uploaded_file)
+        st.image(np.array(img), width=320)
         show_options(uploaded_file)
     else:
         st.info("Favor de cargar un documento.")
