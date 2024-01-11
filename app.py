@@ -79,7 +79,7 @@ def main():
     )
 
     st.markdown("## Carga un documento")
-    uploaded_file = st.file_uploader("Carga un archivo", type=["pdf", "jpg", "png"])
+    uploaded_file = st.file_uploader("Carga un archivo", type=["pdf", "jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
         img = Image.open(uploaded_file)
