@@ -8,7 +8,9 @@ from content import (
     intro_to_extract,
     intro_to_validate,
 )
+from io import BytesIO
 from PIL import Image
+from utils.pdf import is_pdf, pdf_to_image
 
 
 def run(uploaded_file, operation, parameters):
@@ -79,15 +81,24 @@ def main():
     )
 
     st.markdown("## Carga un documento")
-    uploaded_file = st.file_uploader("Carga un archivo", type=["pdf", "jpg", "jpeg", "png"])
+    uploaded_file = st.file_uploader(
+        "Carga un archivo", type=["pdf", "jpg", "jpeg", "png"]
+    )
 
     if uploaded_file is not None:
-        img = Image.open(uploaded_file)
+        uploaded_bytes = uploaded_file.getvalue()
+        if is_pdf(uploaded_bytes):
+            img = pdf_to_image(uploaded_bytes)
+        else:
+            img = Image.open(uploaded_file)
+
+        # Display the image
         st.image(np.array(img), width=320)
 
-        # Seek back to the start of the file
-        uploaded_file.seek(0)
-        show_options(uploaded_file)
+        # Convert the image to bytes
+        image_bytes = BytesIO()
+        img.save(image_bytes, format="PNG")
+        show_options(image_bytes.getvalue())
     else:
         st.info("Favor de cargar un documento.")
 
