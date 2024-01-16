@@ -81,7 +81,9 @@ def main():
     )
 
     st.markdown("## Carga un documento")
-    uploaded_file = st.file_uploader("Carga un archivo", type=["pdf", "jpg", "jpeg", "png"])
+    uploaded_file = st.file_uploader(
+        "Carga un archivo", type=["pdf", "jpg", "jpeg", "png"]
+    )
 
     if uploaded_file is not None:
         uploaded_bytes = uploaded_file.getvalue()
